@@ -9,22 +9,64 @@ function maskPhone(value: string): string {
   return `(${d.slice(0, 2)}) ${d.slice(2, 7)}-${d.slice(7)}`;
 }
 
-const ORGANIZERS = ["Lucas", "Aline", "Vitor", "Joao Lima", "JP Carregal", "Vanessa", "Marcio"];
-
-const BUNTING: Array<"flag-red" | "flag-yellow" | "flag-green" | "flag-blue"> = [
-  "flag-red", "flag-yellow", "flag-green", "flag-blue",
-  "flag-red", "flag-yellow", "flag-green",
+const ORGANIZERS = [
+  "Lucas",
+  "Aline",
+  "Vitor",
+  "Joao Lima",
+  "JP Carregal",
+  "Vanessa",
+  "Marcio",
 ];
 
+const BUNTING: Array<"flag-red" | "flag-yellow" | "flag-green" | "flag-blue"> =
+  [
+    "flag-red",
+    "flag-yellow",
+    "flag-green",
+    "flag-blue",
+    "flag-red",
+    "flag-yellow",
+    "flag-green",
+  ];
+
 const FEATURES = [
-  { icon: "🎵", title: "Música ao Vivo", desc: "As melhores bandas e DJs tocando toda a noite" },
-  { icon: "🔥", title: "Fogueira", desc: "Aquele clima aconchegante para conversa e resenha" },
-  { icon: "🍖", title: "Open de Comidas Típicas", desc: "Caldos, canjica, cachorro quente e mesa mineira" },
-  { icon: "🥤", title: "Bebidas Não Alcoólicas", desc: "Sucos, refrigerantes e água para todos" },
-  { icon: "🎤", title: "Karaokê", desc: "Solte a voz e divirta-se cantando com os amigos" },
-  { icon: "🎲", title: "Bingo com Prêmios", desc: "Muita diversão e prêmios incríveis para ganhar" },
+  {
+    icon: "🎵",
+    title: "Música ao Vivo",
+    desc: "As melhores bandas e DJs tocando toda a noite",
+  },
+  {
+    icon: "🔥",
+    title: "Fogueira",
+    desc: "Aquele clima aconchegante para conversa e resenha",
+  },
+  {
+    icon: "🍖",
+    title: "Open de Comidas Típicas",
+    desc: "Caldos, canjica, cachorro quente e mesa mineira",
+  },
+  {
+    icon: "🥤",
+    title: "Bebidas Não Alcoólicas",
+    desc: "Sucos, refrigerantes e água para todos",
+  },
+  {
+    icon: "🎤",
+    title: "Karaokê",
+    desc: "Solte a voz e divirta-se cantando com os amigos",
+  },
+  {
+    icon: "🎲",
+    title: "Bingo com Prêmios",
+    desc: "Muita diversão e prêmios incríveis para ganhar",
+  },
   { icon: "🎪", title: "Brincadeiras Típicas", desc: "Não pode faltar!" },
-  { icon: "🎉", title: "Muita Resenha", desc: "O clima perfeito para zoar e conversar fiado" },
+  {
+    icon: "🎉",
+    title: "Muita Resenha",
+    desc: "O clima perfeito para zoar e conversar fiado",
+  },
 ];
 
 function Stars() {
@@ -42,7 +84,9 @@ function Stars() {
       star.style.animation = `twinkle ${2 + Math.random() * 3}s infinite`;
       container.appendChild(star);
     }
-    return () => { container.innerHTML = ""; };
+    return () => {
+      container.innerHTML = "";
+    };
   }, []);
 
   return <div ref={ref} className="stars" />;
@@ -61,7 +105,12 @@ function Divider() {
 }
 
 export default function HomePage() {
-  const [form, setForm] = useState({ name: "", contact: "", invitedBy: "", otherName: "" });
+  const [form, setForm] = useState({
+    name: "",
+    contact: "",
+    invitedBy: "",
+    otherName: "",
+  });
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState("");
@@ -89,7 +138,11 @@ export default function HomePage() {
       const res = await fetch("/api/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name: form.name.trim(), contact: form.contact.trim(), invitedBy }),
+        body: JSON.stringify({
+          name: form.name.trim(),
+          contact: form.contact.trim(),
+          invitedBy,
+        }),
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error);
@@ -102,7 +155,13 @@ export default function HomePage() {
   };
 
   return (
-    <main style={{ background: "linear-gradient(135deg, #0f1419 0%, #1a1f2e 100%)", minHeight: "100vh", color: "#fff" }}>
+    <main
+      style={{
+        background: "linear-gradient(135deg, #0f1419 0%, #1a1f2e 100%)",
+        minHeight: "100vh",
+        color: "#fff",
+      }}
+    >
       <Stars />
       <div className="corner-decoration top-left">🌽</div>
       <div className="corner-decoration top-right">🌽</div>
@@ -122,12 +181,16 @@ export default function HomePage() {
         <Divider />
 
         <div className="bunting">
-          {BUNTING.map((color, i) => <div key={i} className={`bunting-flag ${color}`} />)}
+          {BUNTING.map((color, i) => (
+            <div key={i} className={`bunting-flag ${color}`} />
+          ))}
         </div>
 
         <div className="form-section checkerboard-accent">
           <h3 className="form-title">Confirme seu interesse!</h3>
-          <p className="form-subtitle">Deixe seus dados para receber as novidades do evento</p>
+          <p className="form-subtitle">
+            Deixe seus dados para receber as novidades do evento
+          </p>
 
           {success ? (
             <div className="success-message">
@@ -138,28 +201,49 @@ export default function HomePage() {
               <div className="form-group">
                 <label className="form-label">Seu Nome</label>
                 <input
-                  className="form-input" type="text" placeholder="Seu nome completo" required
-                  value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })}
+                  className="form-input"
+                  type="text"
+                  placeholder="Seu nome completo"
+                  required
+                  value={form.name}
+                  onChange={(e) => setForm({ ...form, name: e.target.value })}
                 />
               </div>
 
               <div className="form-group">
                 <label className="form-label">Telefone / WhatsApp</label>
                 <input
-                  className="form-input" type="tel" placeholder="(31) 99999-9999" required
-                  value={form.contact} onChange={(e) => setForm({ ...form, contact: maskPhone(e.target.value) })}
+                  className="form-input"
+                  type="tel"
+                  placeholder="(31) 99999-9999"
+                  required
+                  value={form.contact}
+                  onChange={(e) =>
+                    setForm({ ...form, contact: maskPhone(e.target.value) })
+                  }
                 />
               </div>
 
               <div className="form-group">
                 <label className="form-label">Foi convidado por quem?</label>
                 <select
-                  className="form-input" required
+                  className="form-input"
+                  required
                   value={form.invitedBy}
-                  onChange={(e) => setForm({ ...form, invitedBy: e.target.value, otherName: "" })}
+                  onChange={(e) =>
+                    setForm({
+                      ...form,
+                      invitedBy: e.target.value,
+                      otherName: "",
+                    })
+                  }
                 >
                   <option value="">Selecione quem te convidou...</option>
-                  {ORGANIZERS.map((n) => <option key={n} value={n}>{n}</option>)}
+                  {ORGANIZERS.map((n) => (
+                    <option key={n} value={n}>
+                      {n}
+                    </option>
+                  ))}
                   <option value="Outros">Outros</option>
                 </select>
               </div>
@@ -168,8 +252,14 @@ export default function HomePage() {
                 <div className="form-group">
                   <label className="form-label">Nome de quem te convidou</label>
                   <input
-                    className="form-input" type="text" placeholder="Nome completo" required
-                    value={form.otherName} onChange={(e) => setForm({ ...form, otherName: e.target.value })}
+                    className="form-input"
+                    type="text"
+                    placeholder="Nome completo"
+                    required
+                    value={form.otherName}
+                    onChange={(e) =>
+                      setForm({ ...form, otherName: e.target.value })
+                    }
                   />
                 </div>
               )}
@@ -177,14 +267,10 @@ export default function HomePage() {
               {error && <p className="form-error">{error}</p>}
 
               <button className="form-button" type="submit" disabled={loading}>
-                {loading ? "Enviando..." : "Confirmar Nome na Lista! 🎉"}
+                {loading ? "Enviando..." : "Confirmar nome na Lista!"}
               </button>
             </form>
           )}
-
-          <div className="location-info">
-            <div className="location-badge">📍 Ibirité - MG</div>
-          </div>
         </div>
       </div>
 
