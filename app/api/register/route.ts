@@ -4,6 +4,8 @@ import { prisma } from "@/lib/db";
 export const dynamic = "force-dynamic";
 
 export async function POST(request: NextRequest) {
+  const dbUrl = process.env.DATABASE_URL ?? "(undefined)";
+  console.log("[register] DATABASE_URL prefix:", dbUrl.slice(0, 30));
   try {
     const body = await request.json();
     const { name, contact, invitedBy } = body;
