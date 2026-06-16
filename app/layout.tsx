@@ -3,9 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(
-    process.env.VERCEL_URL
-      ? `https://${process.env.VERCEL_URL}`
-      : "http://localhost:3000"
+    process.env.NEXT_PUBLIC_SITE_URL ?? "https://arraialdosamigos.vercel.app"
   ),
   title: "Arraial dos Amigos",
   description: "Festa entre amigos — 25 de Julho em Ibirité MG. Confirme sua presença!",
