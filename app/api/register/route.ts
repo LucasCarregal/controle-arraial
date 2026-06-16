@@ -24,7 +24,9 @@ export async function POST(request: NextRequest) {
     });
 
     return NextResponse.json({ success: true, id: registration.id }, { status: 201 });
-  } catch {
-    return NextResponse.json({ error: "Erro ao salvar cadastro." }, { status: 500 });
+  } catch (err: unknown) {
+    const msg = err instanceof Error ? err.message : String(err);
+    console.error("[register] DB error:", msg);
+    return NextResponse.json({ error: msg }, { status: 500 });
   }
 }
