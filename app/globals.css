@@ -297,7 +297,7 @@ select.form-input option { background: #1a1f2e; color: #fff; }
 .flag-orange { border-top-color: #FFA500; }
 .flag-purple { border-top-color: #6f42c1; }
 
-.checkerboard-accent { position: relative; margin: 20px 0; }
+.checkerboard-accent { position: relative; margin-top: 20px; margin-bottom: 20px; }
 .checkerboard-accent::before {
   content: '';
   position: absolute;
