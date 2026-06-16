@@ -4,10 +4,6 @@ import { prisma } from "@/lib/db";
 export const dynamic = "force-dynamic";
 
 export async function POST(request: NextRequest) {
-  const dbUrl = process.env.DATABASE_URL ?? "(undefined)";
-  // Log host portion (mask password)
-  const masked = dbUrl.replace(/:([^@]+)@/, ":***@");
-  console.log("[register] DATABASE_URL:", masked.slice(0, 120));
   try {
     const body = await request.json();
     const { name, contact, invitedBy } = body;
@@ -31,6 +27,6 @@ export async function POST(request: NextRequest) {
   } catch (err: unknown) {
     const msg = err instanceof Error ? err.message : String(err);
     console.error("[register] DB error:", msg);
-    return NextResponse.json({ error: msg }, { status: 500 });
+    return NextResponse.json({ error: "Erro ao salvar cadastro." }, { status: 500 });
   }
 }
