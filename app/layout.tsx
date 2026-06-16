@@ -1,11 +1,5 @@
 import type { Metadata } from "next";
-import { Josefin_Sans } from "next/font/google";
 import "./globals.css";
-
-const josefin = Josefin_Sans({
-  subsets: ["latin"],
-  variable: "--font-josefin",
-});
 
 export const metadata: Metadata = {
   title: "Arraial dos Amigos",
@@ -15,7 +9,13 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="pt-BR">
-      <body className={`${josefin.variable} font-sans antialiased`}>{children}</body>
+      <head>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Fredoka+One&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body className="antialiased">{children}</body>
     </html>
   );
 }
