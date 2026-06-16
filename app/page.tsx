@@ -169,7 +169,7 @@ export default function HomePage() {
       {/* Hero */}
       <div className="hero">
         <div className="hero-content">
-          <div className="hero-date">25 DE JULHO DE 2026</div>
+          <div className="hero-date">JULHO DE 2026</div>
           <h1 className="hero-title">ARRAIAL DOS AMIGOS</h1>
           <h2 className="hero-subtitle">🎉 Festa Entre Amigos 🎉</h2>
           <p className="hero-cta-intro">Confirme sua presença agora!</p>
