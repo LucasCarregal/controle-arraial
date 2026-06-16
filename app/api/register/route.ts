@@ -5,7 +5,9 @@ export const dynamic = "force-dynamic";
 
 export async function POST(request: NextRequest) {
   const dbUrl = process.env.DATABASE_URL ?? "(undefined)";
-  console.log("[register] DATABASE_URL prefix:", dbUrl.slice(0, 30));
+  // Log host portion (mask password)
+  const masked = dbUrl.replace(/:([^@]+)@/, ":***@");
+  console.log("[register] DATABASE_URL:", masked.slice(0, 120));
   try {
     const body = await request.json();
     const { name, contact, invitedBy } = body;
