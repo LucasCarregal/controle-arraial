@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+@theme {
+  --color-festa-amarelo: #f5c518;
+  --color-festa-laranja: #e8830a;
+  --color-festa-vermelho: #c0392b;
+  --color-festa-verde: #27ae60;
+  --color-festa-azul: #2980b9;
+  --color-festa-marrom: #7b4f2e;
+  --color-festa-creme: #fef9ec;
+}
+
+body {
+  background-color: var(--color-festa-creme);
+}
