@@ -169,7 +169,7 @@ export default function HomePage() {
       {/* Hero */}
       <div className="hero">
         <div className="hero-content">
-          <div className="hero-date">JULHO DE 2026</div>
+          <div className="hero-date">11 DE JULHO DE 2026</div>
           <h1 className="hero-title">ARRAIAL DOS AMIGOS</h1>
           <h2 className="hero-subtitle">🎉 Festa Entre Amigos 🎉</h2>
           <p className="hero-cta-intro">Confirme sua presença agora!</p>
@@ -273,17 +273,26 @@ export default function HomePage() {
           )}
         </div>
 
-        <div style={{
-          maxWidth: 450, margin: "32px auto 0",
-          background: "rgba(255,184,28,0.08)",
-          border: "1px solid rgba(255,184,28,0.3)",
-          borderRadius: 14, padding: "16px 20px",
-          display: "flex", alignItems: "flex-start", gap: 12,
-        }}>
+        <div
+          style={{
+            maxWidth: 450,
+            margin: "32px auto 0",
+            background: "rgba(255,184,28,0.08)",
+            border: "1px solid rgba(255,184,28,0.3)",
+            borderRadius: 14,
+            padding: "16px 20px",
+            display: "flex",
+            alignItems: "flex-start",
+            gap: 12,
+          }}
+        >
           <span style={{ fontSize: 22, lineHeight: 1.5 }}>🎉</span>
-          <p style={{ fontSize: 14, color: "#ccc", lineHeight: 1.7, margin: 0 }}>
+          <p
+            style={{ fontSize: 14, color: "#ccc", lineHeight: 1.7, margin: 0 }}
+          >
             <strong style={{ color: "#FFB81C" }}>Quer trazer um amigo?</strong>{" "}
-            Adoramos! Só combina antes com quem te chamou — assim a gente garante espaço e boa vibe pra todo mundo 😄
+            Adoramos! Só combina antes com quem te chamou — assim a gente
+            garante espaço e boa vibe pra todo mundo 😄
           </p>
         </div>
       </div>
