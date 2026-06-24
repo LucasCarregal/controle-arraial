@@ -128,6 +128,11 @@ export default function HomePage() {
       setError("Preencha todos os campos.");
       return;
     }
+    const digits = form.contact.replace(/\D/g, "");
+    if (digits.length < 10 || digits.length > 11) {
+      setError("Telefone inválido. Digite um número com DDD (ex: (31) 99999-9999).");
+      return;
+    }
     if (form.invitedBy === "Outros" && !form.otherName.trim()) {
       setError("Informe o nome de quem te convidou.");
       return;
