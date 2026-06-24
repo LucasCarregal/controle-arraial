@@ -78,7 +78,7 @@ export default async function Image() {
           display: "flex",
         }}
       >
-        25 DE JULHO DE 2026 · IBIRITÉ - MG
+        11 DE JULHO DE 2026 · IBIRITÉ - MG
       </div>
 
       <div
